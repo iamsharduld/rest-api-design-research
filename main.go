@@ -24,7 +24,7 @@ import (
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 
-// @host localhost:3000
+// @host https://rest-api-design-research.herokuapp.com:8080
 // @BasePath /
 // @schemes http
 
