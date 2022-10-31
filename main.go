@@ -57,8 +57,14 @@ func main() {
 	e.GET("/", HealthCheck)
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
-	// Weather APIs
+	// Weather
 	e.POST("/weather", GetWeatherData)
+
+	// Stock Data (SPY)
+	e.POST("/stockPrice", GetStockData)
+
+	// Heart Rate Data
+	e.POST("/heartRate", GetHeartRateData)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -108,36 +114,42 @@ func GetWeatherData(c echo.Context) error {
 	return c.JSON(http.StatusOK, WeatherObj)
 }
 
-// func GetWeatherDataType2(c echo.Context) error {
-// 	q := new(QueryByDateRequest)
-// 	if err := c.Bind(q); err != nil {
-// 		return c.String(http.StatusBadRequest, err.Error())
-// 	}
-// 	// Checking if required fields are present
-// 	if err := c.Validate(q); err != nil {
-// 		return err
-// 	}
-// 	fmt.Println(q)
-// 	WeatherObj := &WeatherObj{
-// 		Temperature: 72.01,
-// 		WindSpeed:   14.11,
-// 	}
-// 	return c.JSON(http.StatusOK, WeatherObj)
-// }
+type StockObj struct {
+	Price float32 `json:"price"`
+}
 
-// func GetWeatherDataType3(c echo.Context) error {
-// 	q := new(QueryByDateRequest)
-// 	if err := c.Bind(q); err != nil {
-// 		return c.String(http.StatusBadRequest, err.Error())
-// 	}
-// 	// Checking if required fields are present
-// 	if err := c.Validate(q); err != nil {
-// 		return err
-// 	}
-// 	fmt.Println(q)
-// 	WeatherObj := &WeatherObj{
-// 		Temperature: 72.01,
-// 		WindSpeed:   14.11,
-// 	}
-// 	return c.JSON(http.StatusOK, WeatherObj)
-// }
+func GetStockData(c echo.Context) error {
+	q := new(QueryByDateRequest)
+	if err := c.Bind(q); err != nil {
+		return c.String(http.StatusBadRequest, err.Error())
+	}
+	// Checking if required fields are present
+	if err := c.Validate(q); err != nil {
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+	fmt.Println(q)
+	StockObj := &StockObj{
+		Price: 340.23,
+	}
+	return c.JSON(http.StatusOK, StockObj)
+}
+
+type HeartRate struct {
+	HeartRate float32 `json:"heart_rate"`
+}
+
+func GetHeartRateData(c echo.Context) error {
+	q := new(QueryByDateRequest)
+	if err := c.Bind(q); err != nil {
+		return c.String(http.StatusBadRequest, err.Error())
+	}
+	// Checking if required fields are present
+	if err := c.Validate(q); err != nil {
+		return c.String(http.StatusOK, "Invalid request")
+	}
+	fmt.Println(q)
+	HeartRateObj := &HeartRate{
+		HeartRate: 75,
+	}
+	return c.JSON(http.StatusOK, HeartRateObj)
+}
