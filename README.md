@@ -1,4 +1,4 @@
-# rest-api-design-research
+# REST API Design Research
 
 # License
 BSD 3-Clause License
