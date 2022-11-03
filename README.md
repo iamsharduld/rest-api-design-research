@@ -1,6 +1,6 @@
-# REST API Design Research
+## REST API Design Research
 
-# License
+### License
 BSD 3-Clause License
 
 Copyright (c) 2018, the respective contributors, as shown by the AUTHORS file.
