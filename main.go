@@ -26,6 +26,35 @@ func (cv *CustomValidator) Validate(i interface{}) error {
 	return nil
 }
 
+type User struct {
+	Token string `json:"token"`
+	Email string `json:"email"`
+}
+
+type Users struct {
+	Users []User `json:"users"`
+}
+
+var users = []User{
+	{
+		Email: "iamsharduld@gmail.com",
+		Token: "2347FD2F854ECC36E6BD335DDD88F",
+	},
+	{
+		Email: "mcoblenz@ucsd.edu",
+		Token: "82C89F7F83E5BFA34297FC9E59985",
+	},
+}
+
+func getUserFromToken(token string) (User, error) {
+	for _, user := range users {
+		if user.Token == token {
+			return user, nil
+		}
+	}
+	return User{}, fmt.Errorf("invalid token")
+}
+
 // @title Echo Swagger Example API
 // @version 1.0
 // @description This is a sample server server.
@@ -89,7 +118,8 @@ func HealthCheck(c echo.Context) error {
 }
 
 type QueryByDateRequest struct {
-	Date string `json:"date" validate:"required"`
+	Date  string `json:"date" validate:"required"`
+	Token string `json:"token" validate:"required"`
 }
 
 type WeatherObj struct {
@@ -106,7 +136,12 @@ func GetWeatherData(c echo.Context) error {
 	if err := c.Validate(q); err != nil {
 		return err
 	}
-	fmt.Println(q)
+	user, err := getUserFromToken(q.Token)
+	if err != nil {
+		return fmt.Errorf("invalid token")
+	}
+	fmt.Println(user)
+
 	WeatherObj := &WeatherObj{
 		Temperature: 72.01,
 		WindSpeed:   14.11,
@@ -127,7 +162,11 @@ func GetStockData(c echo.Context) error {
 	if err := c.Validate(q); err != nil {
 		return c.String(http.StatusInternalServerError, err.Error())
 	}
-	fmt.Println(q)
+	user, err := getUserFromToken(q.Token)
+	if err != nil {
+		return fmt.Errorf("invalid token")
+	}
+	fmt.Println(user)
 	StockObj := &StockObj{
 		Price: 340.23,
 	}
@@ -147,7 +186,11 @@ func GetHeartRateData(c echo.Context) error {
 	if err := c.Validate(q); err != nil {
 		return c.String(http.StatusOK, "Invalid request")
 	}
-	fmt.Println(q)
+	user, err := getUserFromToken(q.Token)
+	if err != nil {
+		return fmt.Errorf("invalid token")
+	}
+	fmt.Println(user)
 	HeartRateObj := &HeartRate{
 		HeartRate: 75,
 	}
