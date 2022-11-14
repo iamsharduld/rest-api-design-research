@@ -87,13 +87,19 @@ func main() {
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	// Weather
-	e.POST("/weather", GetWeatherData)
+	e.POST("/weather1", GetWeatherData1)
+	e.POST("/weather2", GetWeatherData2)
+	e.POST("/weather3", GetWeatherData3)
 
 	// Stock Data (SPY)
-	e.POST("/stockPrice", GetStockData)
+	e.POST("/stockPrice1", GetStockData1)
+	e.POST("/stockPrice2", GetStockData2)
+	e.POST("/stockPrice3", GetStockData3)
 
 	// Heart Rate Data
-	e.POST("/heartRate", GetHeartRateData)
+	e.POST("/heartRate1", GetHeartRateData1)
+	e.POST("/heartRate2", GetHeartRateData2)
+	e.POST("/heartRate3", GetHeartRateData3)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -127,7 +133,7 @@ type WeatherObj struct {
 	WindSpeed   float32 `json:"wind_speed"`
 }
 
-func GetWeatherData(c echo.Context) error {
+func GetWeatherData1(c echo.Context) error {
 	q := new(QueryByDateRequest)
 	if err := c.Bind(q); err != nil {
 		return c.String(http.StatusBadRequest, err.Error())
@@ -149,11 +155,75 @@ func GetWeatherData(c echo.Context) error {
 	return c.JSON(http.StatusOK, WeatherObj)
 }
 
+func GetWeatherData2(c echo.Context) error {
+	q := new(QueryByDateRequest)
+	if err := c.Bind(q); err != nil {
+		return c.String(http.StatusBadRequest, err.Error())
+	}
+	// Checking if required fields are present
+	if err := c.Validate(q); err != nil {
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+	user, err := getUserFromToken(q.Token)
+	if err != nil {
+		return fmt.Errorf("invalid token")
+	}
+	fmt.Println(user)
+
+	WeatherObj := &WeatherObj{
+		Temperature: 72.01,
+		WindSpeed:   14.11,
+	}
+	return c.JSON(http.StatusOK, WeatherObj)
+}
+
+func GetWeatherData3(c echo.Context) error {
+	q := new(QueryByDateRequest)
+	if err := c.Bind(q); err != nil {
+		return c.String(http.StatusBadRequest, err.Error())
+	}
+	// Checking if required fields are present
+	if err := c.Validate(q); err != nil {
+		return c.String(http.StatusOK, "Invalid request")
+	}
+	user, err := getUserFromToken(q.Token)
+	if err != nil {
+		return fmt.Errorf("invalid token")
+	}
+	fmt.Println(user)
+
+	WeatherObj := &WeatherObj{
+		Temperature: 72.01,
+		WindSpeed:   14.11,
+	}
+	return c.JSON(http.StatusOK, WeatherObj)
+}
+
 type StockObj struct {
 	Price float32 `json:"price"`
 }
 
-func GetStockData(c echo.Context) error {
+func GetStockData1(c echo.Context) error {
+	q := new(QueryByDateRequest)
+	if err := c.Bind(q); err != nil {
+		return c.String(http.StatusBadRequest, err.Error())
+	}
+	// Checking if required fields are present
+	if err := c.Validate(q); err != nil {
+		return err
+	}
+	user, err := getUserFromToken(q.Token)
+	if err != nil {
+		return fmt.Errorf("invalid token")
+	}
+	fmt.Println(user)
+	StockObj := &StockObj{
+		Price: 340.23,
+	}
+	return c.JSON(http.StatusOK, StockObj)
+}
+
+func GetStockData2(c echo.Context) error {
 	q := new(QueryByDateRequest)
 	if err := c.Bind(q); err != nil {
 		return c.String(http.StatusBadRequest, err.Error())
@@ -173,11 +243,71 @@ func GetStockData(c echo.Context) error {
 	return c.JSON(http.StatusOK, StockObj)
 }
 
+func GetStockData3(c echo.Context) error {
+	q := new(QueryByDateRequest)
+	if err := c.Bind(q); err != nil {
+		return c.String(http.StatusBadRequest, err.Error())
+	}
+	// Checking if required fields are present
+	if err := c.Validate(q); err != nil {
+		return c.String(http.StatusOK, "Invalid request")
+	}
+	user, err := getUserFromToken(q.Token)
+	if err != nil {
+		return fmt.Errorf("invalid token")
+	}
+	fmt.Println(user)
+	StockObj := &StockObj{
+		Price: 340.23,
+	}
+	return c.JSON(http.StatusOK, StockObj)
+}
+
 type HeartRate struct {
 	HeartRate float32 `json:"heart_rate"`
 }
 
-func GetHeartRateData(c echo.Context) error {
+func GetHeartRateData1(c echo.Context) error {
+	q := new(QueryByDateRequest)
+	if err := c.Bind(q); err != nil {
+		return c.String(http.StatusBadRequest, err.Error())
+	}
+	// Checking if required fields are present
+	if err := c.Validate(q); err != nil {
+		return err
+	}
+	user, err := getUserFromToken(q.Token)
+	if err != nil {
+		return fmt.Errorf("invalid token")
+	}
+	fmt.Println(user)
+	HeartRateObj := &HeartRate{
+		HeartRate: 75,
+	}
+	return c.JSON(http.StatusOK, HeartRateObj)
+}
+
+func GetHeartRateData2(c echo.Context) error {
+	q := new(QueryByDateRequest)
+	if err := c.Bind(q); err != nil {
+		return c.String(http.StatusBadRequest, err.Error())
+	}
+	// Checking if required fields are present
+	if err := c.Validate(q); err != nil {
+		return c.String(http.StatusInternalServerError, err.Error())
+	}
+	user, err := getUserFromToken(q.Token)
+	if err != nil {
+		return fmt.Errorf("invalid token")
+	}
+	fmt.Println(user)
+	HeartRateObj := &HeartRate{
+		HeartRate: 75,
+	}
+	return c.JSON(http.StatusOK, HeartRateObj)
+}
+
+func GetHeartRateData3(c echo.Context) error {
 	q := new(QueryByDateRequest)
 	if err := c.Bind(q); err != nil {
 		return c.String(http.StatusBadRequest, err.Error())
