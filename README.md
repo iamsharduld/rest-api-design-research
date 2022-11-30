@@ -27,6 +27,13 @@ Please refer to below screenshot for more details
 <img width="1317" alt="image" src="https://user-images.githubusercontent.com/8417988/204929611-d22dd750-d336-4475-9c58-13daf9e847a5.png">
 
 
+### Deployment and Data Collection
+
+Deployment steps are - https://devcenter.heroku.com/articles/getting-started-with-go
+
+We use variety of Heroku add-ons to log API invocation information. The `key` passed in every request body is used to uniquely identify the end user. This information is then processed to collect metrics like time to implement for combinations of API endpoints.
+
+
 ### Study Survey and Sign up
 
 Please fill the below form to sign up for the study
