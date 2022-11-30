@@ -4,11 +4,11 @@
 
 This repository provides starter code for getting started with 9 different API combinations.
 
-Domain | Weather | Stock Market | Heart Rate |
---- | --- | --- | --- 
-Error Type | 400 Bad Request | 500 Internal Server Error | 200 OK |
-Error Type | 500 Internal Server Error400 Bad Request | 500 Internal Server Error | 200 OK |
-Error Type | 400 Bad Request | 500 Internal Server Error | 200 OK |
+ Weather | Stock Market | Heart Rate |
+ --- | --- | --- 
+400 Bad Request | 400 Bad Request | 400 Bad Request |
+500 Internal Server Error | 500 Internal Server Error | 500 Internal Server Error |
+200 OK | 200 OK | 200 OK |
 
 
 What your application does,
