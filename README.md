@@ -34,6 +34,12 @@ Deployment steps are - https://devcenter.heroku.com/articles/getting-started-wit
 We use variety of Heroku add-ons to log API invocation information. The `key` passed in every request body is used to uniquely identify the end user. This information is then processed to collect metrics like time to implement for combinations of API endpoints.
 
 
+### Next Steps
+
+* Adding complexity to APIs with different ways to get errors inside a single endpoint.
+* Design and develop user interface for research study users to implement APIs on. Figma prototype is in progress, please contact repo collaborators to get access.
+
+
 ### Study Survey and Sign up
 
 Please fill the below form to sign up for the study
