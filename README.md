@@ -4,29 +4,31 @@
 
 This repository provides starter code for getting started with 9 different API combinations.
 
- Weather | Stock Market | Heart Rate |
- --- | --- | --- 
+ Weather (/weather) | Stock Market (/stockPrice) | Heart Rate (/heartRate) |
+--- | --- | --- 
 400 Bad Request | 400 Bad Request | 400 Bad Request |
 500 Internal Server Error | 500 Internal Server Error | 500 Internal Server Error |
 200 OK | 200 OK | 200 OK |
 
 
-What your application does,
-Why you used the technologies you used,
-Some of the challenges you faced and features you hope to implement in the future.
-3. Table of Contents (Optional)
-If your README is very long, you might want to add a table of contents to make it easy for users to navigate to different sections easily. It will make it easier for readers to move around the project with ease.
+### Getting started
 
-4. How to Install and Run the Project
-If you are working on a project that a user needs to install or run locally in a machine like a "POS", you should include the steps required to install your project and also the required dependencies if any.
+1. Installing go - https://go.dev/doc/install
+2. Clone this repository
+3. Go to project's root and run ``` go run main.go```
 
-Provide a step-by-step description of how to get the development environment set and running.
 
-5. How to Use the Project
-Provide instructions and examples so users/contributors can use the project. This will make it easy for them in case they encounter a problem – they will always have a place to reference what is expected.
+### Testing APIs
 
-You can also make use of visual aids by including materials like screenshots to show examples of the running project and also the structure and design principles used in your project.
+The API endpoints are named /heartRate1, /heartRate2, /heartRate3 and have respective names for other endpoints
+Please refer to below screenshot for more details
 
-Also if your project will require authentication like passwords or usernames, this is a good section to include the credentials.
+<img width="1317" alt="image" src="https://user-images.githubusercontent.com/8417988/204929611-d22dd750-d336-4475-9c58-13daf9e847a5.png">
 
-6. Include Credits
+
+### Study Survey and Sign up
+
+Please fill the below form to sign up for the study
+https://forms.gle/e563JRjtsDCtBZ4D7
+
+For edit permissions please contact - sdeshpan@ucsd.edu, mcoblenz@ucsd.edu
