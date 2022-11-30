@@ -20,7 +20,8 @@ The research aims to study developer perception of different REST API error hand
 
 ### Testing APIs
 
-The API endpoints are named /heartRate1, /heartRate2, /heartRate3 and have respective names for other endpoints
+The API endpoints are named /heartRate1, /heartRate2, /heartRate3 and have respective names for other endpoints. Each API request expects a key in the body (POST) which is given to uniquely identify the user requesting the resource.
+
 Please refer to below screenshot for more details
 
 <img width="1317" alt="image" src="https://user-images.githubusercontent.com/8417988/204929611-d22dd750-d336-4475-9c58-13daf9e847a5.png">
