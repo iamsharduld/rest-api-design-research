@@ -1,8 +1,8 @@
 ## REST API Design Research
 
-### Description
+### Project Description
 
-This repository provides starter code for getting started with 9 different API combinations.
+The research aims to study developer perception of different REST API error handling methodologies and aims to measure various metrics and provide evidence to improve this error handling. The repository provides starter code for getting started with 9 different API combinations. We have used Go Programming language and implemented the APIs with the help of [echo](https://echo.labstack.com/) Framework.
 
  Weather (/weather) | Stock Market (/stockPrice) | Heart Rate (/heartRate) |
 --- | --- | --- 
